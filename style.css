@@ -1,0 +1,455 @@
+/* ======================================= */
+/* 0. CONFIGURAÇÃO GERAL E VARIÁVEIS       */
+/* ======================================= */
+
+/* Definição de Variáveis para Cores (TEMA VERMELHO ESCARLATE & BORGONHA) */
+:root {
+    --primary-color: #e53935; /* Vermelho Escarlate (Destaque, Links) */
+    --primary-dark: #b71c1c; /* Borgonha / Vermelho Escuro (Para Hover, Títulos) */
+    
+    --background-light: #fefefe; /* Fundo principal claro */
+    --background-dark: #3e0707; /* Vermelho Quase Preto / Marrom Escuro (Header/Footer) */
+    --text-color-light: #424242; /* Cinza Escuro (Texto principal) */
+    --text-color-dark: #f0f0f0; /* Texto claro em fundo escuro */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Cor de sombra suave */
+    
+    /* Tipografia (Já importado no HTML!) */
+    --font-family-main: 'Roboto', sans-serif;
+    --font-family-title: 'Montserrat', sans-serif; 
+}
+
+/* Reset Básico e Animações */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* ESSENCIAL PARA ANIMAÇÕES SUAVES */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; 
+}
+
+body {
+    font-family: var(--font-family-main);
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background-color: var(--background-light);
+    /* O body será centralizado nas Media Queries */
+}
+
+/* Animações Keyframes para entrada de seções */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classe para aplicar no HTML das seções (Será ativada pelo JS) */
+.fade-in-on-load {
+    opacity: 0; /* Inicia invisível */
+}
+
+.fade-in-active {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Estilo para links genéricos */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Estilo para títulos principais */
+h1, h2, h3, h4 {
+    font-family: var(--font-family-title);
+    margin-bottom: 0.5em;
+    color: var(--primary-dark); 
+    font-weight: 700;
+}
+
+h3 {
+    border-bottom: 3px solid var(--primary-color); 
+    padding-bottom: 8px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+}
+
+/* ======================================= */
+/* 1. HEADER (Hero Section)              */
+/* ======================================= */
+
+.hero-section {
+    background-color: var(--background-dark); 
+    color: var(--text-color-dark);
+    padding: 5rem 20px; 
+    text-align: center;
+    border-radius: 12px; 
+    margin: 25px 15px 0 15px; /* Margem lateral para telas menores */
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+/* Estilo e INTERAÇÃO para a Foto de Perfil */
+.profile-picture {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto 20px auto; 
+    display: block; 
+    border: 6px solid var(--primary-color); 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
+}
+
+.profile-picture:hover {
+    transform: scale(1.05) rotate(1deg); 
+    box-shadow: 0 0 30px var(--primary-color); 
+}
+
+.header-name {
+    font-size: 2.2rem; 
+    margin-bottom: 0.1em;
+    color: #fff; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.header-job {
+    font-size: 1.2rem; 
+    font-weight: 400;
+    color: var(--primary-color); 
+    margin-top: 0;
+    margin-bottom: 1rem; 
+}
+
+.header-description {
+    max-width: 700px;
+    margin: 1rem auto;
+    font-size: 1rem; 
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color); 
+    color: #fff;
+    padding: 0.8rem 1.5rem; 
+    border-radius: 50px; 
+    margin-top: 1.5rem; 
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark); 
+    transform: scale(1.05); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ======================================= */
+/* 2. Main Sections (Comuns)             */
+/* ======================================= */
+
+main {
+    /* Padding horizontal padrão para telas menores */
+    padding: 30px 15px; 
+}
+
+section {
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+}
+
+/* ======================================= */
+/* 3. SECÇÃO 1 - Habilidades (Skills)    */
+/* ======================================= */
+
+.skills-container {
+    display: flex;
+    flex-direction: column; /* Padrão: Coluna (Mobile First) */
+    gap: 30px; 
+}
+
+.skill-category {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color); 
+    border-top: 5px solid var(--primary-dark);
+}
+
+.skill-category h4 {
+    color: var(--primary-dark);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color); 
+    padding-bottom: 5px;
+    font-size: 1.4rem;
+}
+
+/* INTERAÇÃO na lista de habilidades */
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #e0e0e0;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 25px; 
+}
+
+.skill-list li:hover {
+    background-color: rgba(229, 57, 53, 0.05); 
+    padding-left: 30px; 
+    border-radius: 4px;
+}
+
+.skill-list li::before {
+    content: '\2022'; 
+    color: var(--primary-color); 
+    font-weight: bold; 
+    display: inline-block; 
+    width: 1em; 
+    margin-left: -1em; 
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+/* ======================================= */
+/* 4. SECÇÃO 2 - Projetos (Projects)     */
+/* ======================================= */
+
+.projects-grid {
+    display: grid;
+    /* 1 coluna para telas muito pequenas */
+    grid-template-columns: 1fr; 
+    gap: 30px;
+}
+
+/* INTERAÇÃO no Card de Projeto */
+.project-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px var(--shadow-color);
+    border-left: 8px solid var(--primary-color); 
+    transform: translateY(0);
+    display: block; 
+}
+
+.project-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-8px); 
+    cursor: pointer; 
+}
+
+.project-card h4 {
+    color: var(--primary-dark);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.project-description {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.project-links a {
+    margin-right: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.link-github {
+    color: var(--primary-dark);
+}
+
+.link-demo {
+    color: #28a745; /* Verde para Demo */
+}
+
+/* ======================================= */
+/* 5. SECÇÃO 3 - Histórico (Timeline)    */
+/* ======================================= */
+
+.history-section h4 {
+    margin-top: 2rem;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+}
+
+.education-list {
+    list-style: none; 
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.education-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.education-list li::before {
+    content: '•';
+    color: var(--primary-dark);
+    position: absolute;
+    left: 0;
+}
+
+/* ======================================= */
+/* 6. FOOTER - Contato                   */
+/* ======================================= */
+
+.contact-section {
+    background-color: var(--background-dark); 
+    color: var(--text-color-dark);
+    padding: 3.5rem 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 0 15px 25px 15px; 
+}
+
+.contact-section h3 {
+    color: #fff;
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info p, .social-links a {
+    margin: 0.7rem 0;
+}
+
+.contact-info a {
+    color: #ffcdd2; 
+    font-weight: 500;
+}
+
+/* INTERAÇÃO nos Links Sociais */
+.social-links a {
+    display: inline-block;
+    margin: 0 10px; 
+    padding: 8px 15px;
+    border: 2px solid var(--primary-color); 
+    border-radius: 50px;
+    color: var(--text-color-dark);
+    font-weight: 600;
+    font-size: 0.9rem; 
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color); 
+    color: var(--background-dark); 
+    border-color: var(--primary-color);
+    transform: scale(1.1); 
+}
+
+.copyright {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+
+/* ======================================= */
+/* 7. MEDIA QUERIES (Responsividade)     */
+/* ======================================= */
+
+@media (min-width: 600px) {
+    /* Permite que dois projetos apareçam lado a lado mais cedo */
+    .projects-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+    
+    .header-name {
+        font-size: 3rem;
+    }
+    
+    .profile-picture {
+        width: 180px; 
+        height: 180px;
+    }
+}
+
+/* --------------------------------------- */
+/* TABLET / DESKTOP (Ex: > 768px)          */
+/* --------------------------------------- */
+@media (min-width: 768px) {
+    
+    /* 1. O corpo define a largura máxima e centraliza tudo. */
+    body {
+        max-width: 1200px; 
+        margin: 0 auto;
+        padding: 0; /* ESSENCIAL: Remove qualquer padding do body para que ele se restrinja à max-width */
+    }
+    
+    /* 2. O Header e Footer precisam ter MARGENS ZERADAS para que o BODY os centralize,
+       e PADDING INTERNO para o conteúdo respirar. */
+    .hero-section, .contact-section {
+        margin: 25px 0; /* Margens laterais zeradas */
+        padding-left: 50px; 
+        padding-right: 50px;
+    }
+
+    /* 3. O Main remove o padding lateral, pois as sections o terão. */
+    main {
+        padding: 30px 0; 
+    }
+
+    /* 4. Todas as sections dentro do main definem o padding horizontal. */
+    section {
+        padding-left: 50px; 
+        padding-right: 50px;
+    }
+    
+    .header-name {
+        font-size: 4rem;
+    }
+    
+    .profile-picture {
+        width: 200px; 
+        height: 200px;
+        margin-bottom: 25px;
+    }
+    
+    /* Configuração Flexbox para Habilidades */
+    .skills-container {
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+    
+    .skill-category {
+        flex-basis: 32%; 
+    }
+    
+    /* Mantém 2 colunas para projetos no tablet */
+    .projects-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+/* --------------------------------------- */
+/* TELAS MUITO LARGAS (Ex: > 1024px)       */
+/* --------------------------------------- */
+@media (min-width: 1024px) {
+    /* Múltiplas colunas para o grid de projetos em telas muito grandes */
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
